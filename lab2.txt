@@ -1,0 +1,105 @@
+2.1:
+
+cd lab2
+touch fl_magic
+nano fl_magic
+# код_файла: 10 string 11 lab2magicFile11
+file -C -m fl_magic #компиляция
+#создал в nano test.txt где на 11 строке цифра 11
+file test.txt -m fl_magic.mgc
+# результат: тестовый файл определяется как lab2magicFile11 согласно созданному magic файлу
+
+# ещё один поиск
+find -type f -maxdepth 2 -exec file -m fl_magic.mgc {} \;
+
+2.2:
+
+while read GRP; do echo "$GRP" | cut -f1 -d":" >> lab2tempFile.txt; done < /etc/group; paste -d, -s lab2tempFile.txt; rm -f lab2tempFile.txt
+
+2.3:
+
+mkdir lab2
+cd lab2
+touch exThree.sh
+nano exThree.sh
+
+
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+echo "Файлы, разрешённые к исполнению: "
+
+dirSearch ()
+{
+for file in $1/*
+do
+if [ -d "$file" ] && [ ! -L "$file" ]
+then 
+dirSearch "$file"
+elif [ -f "$file" ] && [ -x "$file" ]
+then
+echo "$file"
+fi
+done
+}
+
+for file in $DIR/*
+do
+if [ -d "$file" ] && [ ! -L "$file" ]
+then 
+dirSearch "$file"
+elif [ -f "$file" ] && [ -x "$file" ]
+then
+echo "$file"
+fi
+done
+
+
+chmod +x exThree.sh
+./exThree.sh
+
+2.4:
+
+
+#!/bin/bash
+
+inThis=0
+inDir=0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+dirReckon ()
+{
+for file in $1/*
+do
+if [ ! -d "$file" ] && [ ! -L "$file" ] && [ -f "$file" ]
+then 
+let "inDir++"
+elif [ -d "$file" ] && [ ! -L "$file" ] && [ ! -f "$file" ]
+then
+dirReckon "$file"
+fi
+done
+}
+
+for file in $DIR/*
+do
+if [ ! -d "$file" ] && [ ! -L "$file" ] && [ -f "$file" ]
+then 
+let "inThis++"
+elif [ -d "$file" ] && [ ! -L "$file" ] && [ ! -f "$file" ]
+then
+dirReckon "$file"
+fi
+done
+
+echo "Количество файлов в директории запуска скрипта: $inThis"
+echo "Количество файлов в поддиректориях: $inDir"
+add=$(($inThis + $inDir)) 
+echo "Всего файлов: $add"
+
+
+2.5:
+
+ifconfig #демонстрация всего
+# HWaddr на некоторых системах
+ifconfig | grep ether | cut -f10 -d" " #вывод

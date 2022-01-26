@@ -1,0 +1,39 @@
+4.1
+
+#!/bin/bash
+
+First=$(md5sum change.diff | cut -f1 -d" ")
+Second=$(md5sum newdiff.diff | cut -f1 -d" ")
+echo $First
+echo $Second
+if [ "$First" != "$Second" ]
+then
+echo "Суммы не равны."
+elif [ "$First" = "$Second" ]
+then
+echo "Суммы равны."
+else
+echo "Error"
+fi
+
+4.2
+
+#!/bin/bash
+
+DateNow=$(date +%s)
+let "DateInFuture = DateNow + 10"
+touch -d @$DateInFuture bomb.txt
+while [ "$DateNow" -ne "$DateInFuture" ]
+do
+ToExplosionBomb=$(date -r bomb.txt +%s)
+let "ToExplosion = ToExplosionBomb - DateNow"
+echo "До взрыва бомбы: " $ToExplosion
+sleep 1
+DateNow=$(date +%s)
+done
+echo "(БА-БАХ)"
+
+4.3
+
+#!/bin/bash
+:

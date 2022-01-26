@@ -1,0 +1,16 @@
+3.1
+
+su
+apt-get install mailutils
+echo "Лабораторая работа№3 Тест" | mail -s "Лаб3" cheshire1711@gmail.com
+
+3.2
+
+patch -R changed.txt < change.diff
+#diff changed.txt changed2.txt > newdiff.diff
+
+3.3
+
+touch "test~" "test.~" "#test#" "#.#"
+find -type f -regex ".*[*~|#*#]" -exec rm -v {} \; #первый способ
+find -type f \( -name '*~' -or -name '#*#' \) -delete -print #второй способ
