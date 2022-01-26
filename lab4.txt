@@ -8,10 +8,10 @@ echo $First
 echo $Second
 if [ "$First" != "$Second" ]
 then
-echo "Суммы не равны."
+echo "РЎСѓРјРјС‹ РЅРµ СЂР°РІРЅС‹."
 elif [ "$First" = "$Second" ]
 then
-echo "Суммы равны."
+echo "РЎСѓРјРјС‹ СЂР°РІРЅС‹."
 else
 echo "Error"
 fi
@@ -27,11 +27,11 @@ while [ "$DateNow" -ne "$DateInFuture" ]
 do
 ToExplosionBomb=$(date -r bomb.txt +%s)
 let "ToExplosion = ToExplosionBomb - DateNow"
-echo "До взрыва бомбы: " $ToExplosion
+echo "Р”Рѕ РІР·СЂС‹РІР° Р±РѕРјР±С‹: " $ToExplosion
 sleep 1
 DateNow=$(date +%s)
 done
-echo "(БА-БАХ)"
+echo "(Р‘Рђ-Р‘РђРҐ)"
 
 4.3
 

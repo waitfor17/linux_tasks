@@ -2,7 +2,7 @@
 
 su
 apt-get install mailutils
-echo "Лабораторая работа№3 Тест" | mail -s "Лаб3" cheshire1711@gmail.com
+echo "Р›Р°Р±РѕСЂР°С‚РѕСЂР°СЏ СЂР°Р±РѕС‚Р°в„–3 РўРµСЃС‚" | mail -s "Р›Р°Р±3" cheshire1711@gmail.com
 
 3.2
 
@@ -12,5 +12,5 @@ patch -R changed.txt < change.diff
 3.3
 
 touch "test~" "test.~" "#test#" "#.#"
-find -type f -regex ".*[*~|#*#]" -exec rm -v {} \; #первый способ
-find -type f \( -name '*~' -or -name '#*#' \) -delete -print #второй способ
+find -type f -regex ".*[*~|#*#]" -exec rm -v {} \; #РїРµСЂРІС‹Р№ СЃРїРѕСЃРѕР±
+find -type f \( -name '*~' -or -name '#*#' \) -delete -print #РІС‚РѕСЂРѕР№ СЃРїРѕСЃРѕР±

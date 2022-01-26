@@ -4,7 +4,7 @@ cd lab1
 mkdir test0 test2
 touch test1 test3 test4 
 ln -s test0 test6
-(ln test3 test5 - для жёсткой ссылки #bugfix)
+(ln test3 test5 - РґР»СЏ Р¶С‘СЃС‚РєРѕР№ СЃСЃС‹Р»РєРё #bugfix)
 
 truncate -s 4 test1
 truncate -s 1 test3
@@ -32,9 +32,9 @@ nano save.sh
 
 # #!/bin/bash
 # while true; do echo "hello"; sleep 1; done; exit 0
-# ^O для сохранения
-# ^X для выхода
-# ^C для остановки цикла
+# ^O РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+# ^X РґР»СЏ РІС‹С…РѕРґР°
+# ^C РґР»СЏ РѕСЃС‚Р°РЅРѕРІРєРё С†РёРєР»Р°
 
 chmod +x save.sh
 ./save.sh
